@@ -82,6 +82,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.yellow, function (sprite, otherS
         ....ffffffffffffffffffffffff....
         `)
 })
+scene.onHitWall(SpriteKind.green, function (sprite, location) {
+    sprite.destroy()
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.red, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeScoreBy(5)
@@ -129,6 +132,12 @@ info.onCountdownEnd(function () {
         game.over(false, effects.splatter)
     }
 })
+scene.onHitWall(SpriteKind.red, function (sprite, location) {
+    sprite.destroy()
+})
+scene.onHitWall(SpriteKind.yellow, function (sprite, location) {
+    sprite.destroy()
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.blue, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeScoreBy(1)
@@ -166,6 +175,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.blue, function (sprite, otherSpr
         ....ffffffffffffffffffffffff....
         ....ffffffffffffffffffffffff....
         `)
+})
+scene.onHitWall(SpriteKind.blue, function (sprite, location) {
+    sprite.destroy()
+})
+scene.onHitWall(SpriteKind.black, function (sprite, location) {
+    sprite.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.green, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -330,6 +345,24 @@ scene.setBackgroundImage(img`
     5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
     `)
 info.startCountdown(20)
+tiles.setTilemap(tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    `, [myTiles.transparency16], TileScale.Sixteen))
 let Mor = sprites.create(img`
     ..........ffccccccccff..........
     ..........ffccccccccff..........
